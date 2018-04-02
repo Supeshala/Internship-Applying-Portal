@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 26, 2018 9:57:27 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="POJOS.Duration" table="duration" catalog="slt" optimistic-lock="version">
+        <id name="iddura" type="java.lang.Integer">
+            <column name="iddura" />
+            <generator class="identity" />
+        </id>
+        <property name="noOfMonths" type="java.lang.Integer">
+            <column name="no_of_months" />
+        </property>
+        <set name="students" table="student" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="dura_id" />
+            </key>
+            <one-to-many class="POJOS.Student" />
+        </set>
+    </class>
+</hibernate-mapping>

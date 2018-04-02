@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 26, 2018 9:57:27 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="POJOS.Student" table="student" catalog="slt" optimistic-lock="version">
+        <id name="nic" type="string">
+            <column name="nic" length="45" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="branch" class="POJOS.Branch" fetch="select">
+            <column name="branchid" />
+        </many-to-one>
+        <many-to-one name="duration" class="POJOS.Duration" fetch="select">
+            <column name="dura_id" />
+        </many-to-one>
+        <many-to-one name="educationalLevel" class="POJOS.EducationalLevel" fetch="select">
+            <column name="edulev_id" />
+        </many-to-one>
+        <many-to-one name="fields" class="POJOS.Fields" fetch="select">
+            <column name="field_id" />
+        </many-to-one>
+        <many-to-one name="payment" class="POJOS.Payment" fetch="select">
+            <column name="paymt_id" />
+        </many-to-one>
+        <many-to-one name="qualification" class="POJOS.Qualification" fetch="select">
+            <column name="qual_id" />
+        </many-to-one>
+        <many-to-one name="university" class="POJOS.University" fetch="select">
+            <column name="uniid" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="name" length="45" />
+        </property>
+        <property name="fullname" type="string">
+            <column name="fullname" length="45" />
+        </property>
+        <property name="gender" type="string">
+            <column name="gender" length="45" />
+        </property>
+        <property name="dob" type="date">
+            <column name="dob" length="0" />
+        </property>
+        <property name="address" type="string">
+            <column name="address" length="45" />
+        </property>
+        <property name="tpNo" type="string">
+            <column name="tp_no" length="45" />
+        </property>
+        <property name="refNo" type="string">
+            <column name="ref_no" length="45" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="45" />
+        </property>
+        <property name="dor" type="date">
+            <column name="dor" length="0" />
+        </property>
+        <property name="al" type="string">
+            <column name="al" length="65535" />
+        </property>
+        <property name="ol" type="string">
+            <column name="ol" length="65535" />
+        </property>
+        <set name="logins" table="login" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="student_nic" length="45" not-null="true" />
+            </key>
+            <one-to-many class="POJOS.Login" />
+        </set>
+        <set name="fileAtttaches" table="file_atttach" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="student_nic" length="45" not-null="true" />
+            </key>
+            <one-to-many class="POJOS.FileAtttach" />
+        </set>
+        <set name="references" table="reference" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="student_nic" length="45" />
+            </key>
+            <one-to-many class="POJOS.Reference" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 26, 2018 9:57:27 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="POJOS.Qualification" table="qualification" catalog="slt" optimistic-lock="version">
+        <id name="idqua" type="java.lang.Integer">
+            <column name="idqua" />
+            <generator class="identity" />
+        </id>
+        <property name="proQua" type="string">
+            <column name="pro_qua" length="65535" />
+        </property>
+        <property name="awardsAchiv" type="string">
+            <column name="awards_achiv" length="65535" />
+        </property>
+        <property name="studentNic" type="string">
+            <column name="student_nic" length="45" />
+        </property>
+        <set name="students" table="student" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="qual_id" />
+            </key>
+            <one-to-many class="POJOS.Student" />
+        </set>
+    </class>
+</hibernate-mapping>

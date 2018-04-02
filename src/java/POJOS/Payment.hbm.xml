@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 26, 2018 9:57:27 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="POJOS.Payment" table="payment" catalog="slt" optimistic-lock="version">
+        <id name="idpaymt" type="java.lang.Integer">
+            <column name="idpaymt" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="status" class="POJOS.Status" fetch="select">
+            <column name="status_idstatus" />
+        </many-to-one>
+        <property name="nic" type="string">
+            <column name="nic" length="45" not-null="true" />
+        </property>
+        <property name="tpNo" type="string">
+            <column name="tp_no" length="45" />
+        </property>
+        <property name="studentIdstudent" type="int">
+            <column name="student_idstudent" not-null="true" />
+        </property>
+        <set name="students" table="student" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="paymt_id" />
+            </key>
+            <one-to-many class="POJOS.Student" />
+        </set>
+    </class>
+</hibernate-mapping>

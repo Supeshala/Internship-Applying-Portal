@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 26, 2018 9:57:27 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="POJOS.Reference" table="reference" catalog="slt" optimistic-lock="version">
+        <id name="idrefer" type="java.lang.Integer">
+            <column name="idrefer" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="student" class="POJOS.Student" fetch="select">
+            <column name="student_nic" length="45" />
+        </many-to-one>
+        <property name="refName" type="string">
+            <column name="ref_name" length="45" />
+        </property>
+        <property name="refPost" type="string">
+            <column name="ref_post" length="45" />
+        </property>
+        <property name="address" type="string">
+            <column name="address" length="45" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="45" />
+        </property>
+        <property name="conNo" type="string">
+            <column name="con_no" length="45" />
+        </property>
+        <property name="refNo" type="string">
+            <column name="ref_no" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

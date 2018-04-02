@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 26, 2018 9:57:27 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="POJOS.FileAtttach" table="file_atttach" catalog="slt" optimistic-lock="version">
+        <id name="idfileAtttach" type="java.lang.Integer">
+            <column name="idfile_atttach" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="student" class="POJOS.Student" fetch="select">
+            <column name="student_nic" length="45" not-null="true" />
+        </many-to-one>
+        <property name="photo" type="string">
+            <column name="photo" length="65535" />
+        </property>
+        <property name="cv" type="string">
+            <column name="cv" length="45" />
+        </property>
+        <property name="studentIdstudent" type="int">
+            <column name="student_idstudent" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
